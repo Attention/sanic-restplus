@@ -26,7 +26,7 @@ def abort(code=500, message=None, **kwargs):
     raise exceptions.SanicException(message=message, status_code=code)
 
 class RestError(Exception):
-    '''Base class for all Flask-Restplus Errors'''
+    '''Base class for all Sanic-Restplus Errors'''
     def __init__(self, msg):
         self.msg = msg
 

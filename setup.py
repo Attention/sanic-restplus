@@ -43,10 +43,10 @@ long_description = '\n'.join((
 ))
 
 
-exec(compile(open('flask_restplus/__about__.py').read(), 'flask_restplus/__about__.py', 'exec'))
+exec(compile(open('sanic_restplus/__about__.py').read(), 'sanic_restplus/__about__.py', 'exec'))
 
 tests_require = ['pytest', 'pytest-sugar', 'pytest-flask', 'pytest-mock', 'pytest-faker', 'blinker', 'tzlocal', 'mock']
-install_requires = ['Sanic>=0.4.1', 'sanic-jinja2', 'six>=1.3.0', 'pytz', 'aniso8601>=0.82', 'jsonschema']
+install_requires = ['Sanic>=0.4.1', 'sanic-jinja2', 'six>=1.3.0', 'pytz', 'aniso8601>=0.82', 'jsonschema','werkzeug']
 doc_require = ['sphinx', 'alabaster', 'sphinx_issues']
 qa_require = ['pytest-cover', 'flake8']
 ci_require = ['invoke>=0.13'] + qa_require + tests_require
@@ -58,7 +58,7 @@ except:
     tests_require += ['mock']
 
 setup(
-    name='flask-restplus',
+    name='sanic_restplus',
     version=__version__,
     description=__description__,
     long_description=long_description,

@@ -610,7 +610,8 @@ class Api(object):
 
         :return: bool
         '''
-        app = request.app
+        # conntion_timeout han't request object
+        app = request.app if request else None
         try:
             return self._dummy_router_get(app.router, request.method, request)
         except InvalidUsage as e:
@@ -801,7 +802,7 @@ class Api(object):
             setup_state.add_url_rule = MethodType(Api._blueprint_setup_add_url_rule_patch,
                                                   setup_state)
         if not setup_state.first_registration:
-            raise ValueError('flask-restplus blueprints can only be registered once.')
+            raise ValueError('sanic-restplus blueprints can only be registered once.')
         self._init_app(setup_state.app)
 
     def mediatypes_method(self):
@@ -845,7 +846,7 @@ class Api(object):
         '''Given a response, change it to ask for credentials'''
 
         if self.serve_challenge_on_401:
-            realm = current_app.config.get("HTTP_BASIC_AUTH_REALM", "flask-restplus")
+            realm = current_app.config.get("HTTP_BASIC_AUTH_REALM", "sanic-restplus")
             challenge = u"{0} realm=\"{1}\"".format("Basic", realm)
 
             response.headers['WWW-Authenticate'] = challenge
@@ -884,7 +885,7 @@ class ApiErrorHandler(ErrorHandler):
         if self.api._has_fr_route(request):
             try:
                 return self.api.handle_error(request, e)
-            except Exception as e:
+            except:
                 pass  # Fall through to original handler
         return self.original_handler.response(request, e)
 

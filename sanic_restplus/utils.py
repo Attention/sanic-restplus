@@ -141,10 +141,15 @@ def best_match_accept_mimetype(request, representations, default=None):
         for accept_type, qual in accept_mimetypes:
             if accept_type in representations:
                 return accept_type
+        accept_all = False
         for accept_type, qual in accept_mimetypes:
             type_part = str(accept_type).split(';', 1)[0]
             if type_part in representations:
                 return type_part
+            elif type_part == '*/*':
+                accept_all = True
+        if accept_all:
+            return default
     except (AttributeError, KeyError):
         return default
 

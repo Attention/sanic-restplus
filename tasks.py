@@ -38,7 +38,7 @@ def test(ctx):
 def cover(ctx, html=False):
     '''Run tests suite with coverage'''
     extra = '--cov-report html' if html else ''
-    lrun('pytest --cov flask_restplus --cov-report term {0}'.format(extra), pty=True)
+    lrun('pytest --cov sanic_restplus --cov-report term {0}'.format(extra), pty=True)
 
 
 @task
@@ -50,7 +50,7 @@ def tox(ctx):
 @task
 def qa(ctx):
     '''Run a quality report'''
-    lrun('flake8 flask_restplus tests')
+    lrun('flake8 sanic_restplus tests')
 
 
 @task

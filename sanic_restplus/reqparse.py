@@ -39,7 +39,7 @@ _friendly_location = {
     'files': 'an uploaded file',
 }
 
-#: Maps Flask-RESTPlus RequestParser locations to Swagger ones
+#: Maps Sanic-RESTPlus RequestParser locations to Swagger ones
 LOCATIONS = {
     'args': 'query',
     'form': 'formData',
